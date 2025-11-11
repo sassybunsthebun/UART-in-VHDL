@@ -1,0 +1,42 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity uart is
+
+generic(
+    clk_freq  :  INTEGER    := 50_000_000;  --frequency of system clock in Hertz
+    baud_rate :  INTEGER    := 19_200;      --data link baud rate in bits/second
+    os_rate   :  INTEGER    := 16;          --oversampling rate to find center of receive bits (in samples per baud period)
+    d_width   :  INTEGER    := 8;           --data bus width
+    parity    :  INTEGER    := 1;           --0 for no parity, 1 for parity
+    parity_eo :  STD_LOGIC  := '0'			  --'0' for even, '1' for odd parity
+	 );
+port ( 	clk   : in std_logic;	-----system clock
+       	reset : in std_logic;	-----reset input
+		 	RX   : in  std_logic;	-----fpga receive
+			TX: out std_logic);		-----fpga transmit
+end uart;
+
+architecture Behavioral of uart is
+	type uart_tx_states is ( 
+        tx_send_start_bit,
+        tx_send_data,
+        tx_send_stop_bit
+		  );
+	type uart_rx_states is ( 
+        rx_get_start_bit, 
+        rx_get_data, 
+        rx_get_stop_bit
+		 );	 
+begin
+
+
+process(reset,clk)
+	begin
+		if reset = '0' then
+			--variables 0 here 
+		elsif rising_edge(clk) then
+		
+		--do something

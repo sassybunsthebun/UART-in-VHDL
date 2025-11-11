@@ -1,0 +1,902 @@
+Analysis & Synthesis report for uart
+Fri Nov  7 10:49:03 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |UART|CTRL:INSTANCE_CTRL|state_button_1_press
+  9. State Machine - |UART|CTRL:INSTANCE_CTRL|state_button_0_press
+ 10. State Machine - |UART|tx:INSTANCE_TX|state
+ 11. State Machine - |UART|rx:INSTANCE_RX|state
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: Top-level Entity: |uart
+ 18. Parameter Settings for User Entity Instance: rx:INSTANCE_RX
+ 19. Parameter Settings for User Entity Instance: tx:INSTANCE_TX
+ 20. Parameter Settings for User Entity Instance: CTRL:INSTANCE_CTRL
+ 21. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod5
+ 22. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Div4
+ 23. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod4
+ 24. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Div3
+ 25. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod3
+ 26. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod2
+ 27. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod1
+ 28. Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod0
+ 29. Port Connectivity Checks: "CTRL:INSTANCE_CTRL"
+ 30. Port Connectivity Checks: "rx:INSTANCE_RX"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Nov  7 10:49:03 2025           ;
+; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                      ; uart                                            ;
+; Top-level Entity Name              ; UART                                            ;
+; Family                             ; MAX 10                                          ;
+; Total logic elements               ; 6,264                                           ;
+;     Total combinational functions  ; 6,234                                           ;
+;     Dedicated logic registers      ; 200                                             ;
+; Total registers                    ; 200                                             ;
+; Total pins                         ; 84                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
+; UFM blocks                         ; 0                                               ;
+; ADC blocks                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; uart               ; uart               ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation              ; All                ;                    ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                              ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                          ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+; uart.vhd                         ; yes             ; User VHDL File               ; /home/sara/fpga/uart/uart.vhd                                                         ;         ;
+; RX.vhd                           ; yes             ; User VHDL File               ; /home/sara/fpga/uart/RX.vhd                                                           ;         ;
+; TX.vhd                           ; yes             ; User VHDL File               ; /home/sara/fpga/uart/TX.vhd                                                           ;         ;
+; CTRL.vhd                         ; yes             ; User VHDL File               ; /home/sara/fpga/uart/CTRL.vhd                                                         ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/sara/intelFPGA_lite/24.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/sara/intelFPGA_lite/24.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/sara/intelFPGA_lite/24.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal241.inc                   ; yes             ; Megafunction                 ; /home/sara/intelFPGA_lite/24.1std/quartus/libraries/megafunctions/aglobal241.inc      ;         ;
+; db/lpm_divide_25o.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_divide_25o.tdf                                            ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/abs_divider_4dg.tdf                                           ;         ;
+; db/alt_u_div_o2f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/alt_u_div_o2f.tdf                                             ;         ;
+; db/lpm_abs_4p9.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_abs_4p9.tdf                                               ;         ;
+; db/lpm_divide_fbo.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_divide_fbo.tdf                                            ;         ;
+; db/abs_divider_kbg.tdf           ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/abs_divider_kbg.tdf                                           ;         ;
+; db/alt_u_div_she.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/alt_u_div_she.tdf                                             ;         ;
+; db/add_sub_t3c.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/add_sub_t3c.tdf                                               ;         ;
+; db/add_sub_u3c.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/add_sub_u3c.tdf                                               ;         ;
+; db/lpm_abs_o99.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_abs_o99.tdf                                               ;         ;
+; db/lpm_abs_8b9.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_abs_8b9.tdf                                               ;         ;
+; db/lpm_divide_ibo.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_divide_ibo.tdf                                            ;         ;
+; db/abs_divider_nbg.tdf           ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/abs_divider_nbg.tdf                                           ;         ;
+; db/alt_u_div_2ie.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/alt_u_div_2ie.tdf                                             ;         ;
+; db/lpm_abs_r99.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/sara/fpga/uart/db/lpm_abs_r99.tdf                                               ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                            ;
++---------------------------------------------+------------------------------------------+
+; Resource                                    ; Usage                                    ;
++---------------------------------------------+------------------------------------------+
+; Estimated Total logic elements              ; 6,264                                    ;
+;                                             ;                                          ;
+; Total combinational functions               ; 6234                                     ;
+; Logic element usage by number of LUT inputs ;                                          ;
+;     -- 4 input functions                    ; 1718                                     ;
+;     -- 3 input functions                    ; 1980                                     ;
+;     -- <=2 input functions                  ; 2536                                     ;
+;                                             ;                                          ;
+; Logic elements by mode                      ;                                          ;
+;     -- normal mode                          ; 4084                                     ;
+;     -- arithmetic mode                      ; 2150                                     ;
+;                                             ;                                          ;
+; Total registers                             ; 200                                      ;
+;     -- Dedicated logic registers            ; 200                                      ;
+;     -- I/O registers                        ; 0                                        ;
+;                                             ;                                          ;
+; I/O pins                                    ; 84                                       ;
+;                                             ;                                          ;
+; Embedded Multiplier 9-bit elements          ; 0                                        ;
+;                                             ;                                          ;
+; Maximum fan-out node                        ; CTRL:INSTANCE_CTRL|number_to_display[31] ;
+; Maximum fan-out                             ; 200                                      ;
+; Total fan-out                               ; 18268                                    ;
+; Average fan-out                             ; 2.77                                     ;
++---------------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                    ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                   ; Entity Name     ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |UART                                    ; 6234 (0)            ; 200 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 84   ; 0            ; 0          ; |UART                                                                                                                 ; UART            ; work         ;
+;    |CTRL:INSTANCE_CTRL|                  ; 6137 (324)          ; 133 (133)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL                                                                                              ; CTRL            ; work         ;
+;       |lpm_divide:Div3|                  ; 704 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div3                                                                              ; lpm_divide      ; work         ;
+;          |lpm_divide_ibo:auto_generated| ; 704 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div3|lpm_divide_ibo:auto_generated                                                ; lpm_divide_ibo  ; work         ;
+;             |abs_divider_nbg:divider|    ; 704 (55)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div3|lpm_divide_ibo:auto_generated|abs_divider_nbg:divider                        ; abs_divider_nbg ; work         ;
+;                |alt_u_div_2ie:divider|   ; 625 (625)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div3|lpm_divide_ibo:auto_generated|abs_divider_nbg:divider|alt_u_div_2ie:divider  ; alt_u_div_2ie   ; work         ;
+;                |lpm_abs_8b9:my_abs_num|  ; 24 (24)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div3|lpm_divide_ibo:auto_generated|abs_divider_nbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9     ; work         ;
+;       |lpm_divide:Div4|                  ; 545 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div4                                                                              ; lpm_divide      ; work         ;
+;          |lpm_divide_fbo:auto_generated| ; 545 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div4|lpm_divide_fbo:auto_generated                                                ; lpm_divide_fbo  ; work         ;
+;             |abs_divider_kbg:divider|    ; 545 (61)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div4|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider                        ; abs_divider_kbg ; work         ;
+;                |alt_u_div_she:divider|   ; 449 (449)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div4|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|alt_u_div_she:divider  ; alt_u_div_she   ; work         ;
+;                |lpm_abs_8b9:my_abs_num|  ; 35 (35)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Div4|lpm_divide_fbo:auto_generated|abs_divider_kbg:divider|lpm_abs_8b9:my_abs_num ; lpm_abs_8b9     ; work         ;
+;       |lpm_divide:Mod3|                  ; 1477 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod3                                                                              ; lpm_divide      ; work         ;
+;          |lpm_divide_25o:auto_generated| ; 1477 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod3|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o  ; work         ;
+;             |abs_divider_4dg:divider|    ; 1477 (9)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg ; work         ;
+;                |alt_u_div_o2f:divider|   ; 1440 (1440)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_o2f:divider  ; alt_u_div_o2f   ; work         ;
+;                |lpm_abs_4p9:my_abs_num|  ; 28 (28)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod3|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_num ; lpm_abs_4p9     ; work         ;
+;       |lpm_divide:Mod4|                  ; 1537 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod4                                                                              ; lpm_divide      ; work         ;
+;          |lpm_divide_25o:auto_generated| ; 1537 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod4|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o  ; work         ;
+;             |abs_divider_4dg:divider|    ; 1537 (9)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod4|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg ; work         ;
+;                |alt_u_div_o2f:divider|   ; 1497 (1497)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod4|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_o2f:divider  ; alt_u_div_o2f   ; work         ;
+;                |lpm_abs_4p9:my_abs_num|  ; 31 (31)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod4|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_num ; lpm_abs_4p9     ; work         ;
+;       |lpm_divide:Mod5|                  ; 1550 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod5                                                                              ; lpm_divide      ; work         ;
+;          |lpm_divide_25o:auto_generated| ; 1550 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod5|lpm_divide_25o:auto_generated                                                ; lpm_divide_25o  ; work         ;
+;             |abs_divider_4dg:divider|    ; 1550 (8)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod5|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                        ; abs_divider_4dg ; work         ;
+;                |alt_u_div_o2f:divider|   ; 1510 (1510)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod5|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_o2f:divider  ; alt_u_div_o2f   ; work         ;
+;                |lpm_abs_4p9:my_abs_num|  ; 32 (32)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|CTRL:INSTANCE_CTRL|lpm_divide:Mod5|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_4p9:my_abs_num ; lpm_abs_4p9     ; work         ;
+;    |rx:INSTANCE_RX|                      ; 54 (54)             ; 37 (37)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|rx:INSTANCE_RX                                                                                                  ; rx              ; work         ;
+;    |tx:INSTANCE_TX|                      ; 43 (43)             ; 30 (30)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |UART|tx:INSTANCE_TX                                                                                                  ; tx              ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |UART|CTRL:INSTANCE_CTRL|state_button_1_press                                                              ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+; Name                           ; state_button_1_press.pressed ; state_button_1_press.wait_time ; state_button_1_press.idle ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+; state_button_1_press.idle      ; 0                            ; 0                              ; 0                         ;
+; state_button_1_press.wait_time ; 0                            ; 1                              ; 1                         ;
+; state_button_1_press.pressed   ; 1                            ; 0                              ; 1                         ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |UART|CTRL:INSTANCE_CTRL|state_button_0_press                                                              ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+; Name                           ; state_button_0_press.pressed ; state_button_0_press.wait_time ; state_button_0_press.idle ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+; state_button_0_press.idle      ; 0                            ; 0                              ; 0                         ;
+; state_button_0_press.wait_time ; 0                            ; 1                              ; 1                         ;
+; state_button_0_press.pressed   ; 1                            ; 0                              ; 1                         ;
++--------------------------------+------------------------------+--------------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |UART|tx:INSTANCE_TX|state                                        ;
++-----------------+----------------+-----------------+-----------------+------------+
+; Name            ; state.STOP_BIT ; state.DATA_BITS ; state.START_BIT ; state.IDLE ;
++-----------------+----------------+-----------------+-----------------+------------+
+; state.IDLE      ; 0              ; 0               ; 0               ; 0          ;
+; state.START_BIT ; 0              ; 0               ; 1               ; 1          ;
+; state.DATA_BITS ; 0              ; 1               ; 0               ; 1          ;
+; state.STOP_BIT  ; 1              ; 0               ; 0               ; 1          ;
++-----------------+----------------+-----------------+-----------------+------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------+
+; State Machine - |UART|rx:INSTANCE_RX|state                       ;
++-------------+------------+------------+-------------+------------+
+; Name        ; state.STOP ; state.DATA ; state.START ; state.IDLE ;
++-------------+------------+------------+-------------+------------+
+; state.IDLE  ; 0          ; 0          ; 0           ; 0          ;
+; state.START ; 0          ; 0          ; 1           ; 1          ;
+; state.DATA  ; 0          ; 1          ; 0           ; 1          ;
+; state.STOP  ; 1          ; 0          ; 0           ; 1          ;
++-------------+------------+------------+-------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                    ;
++------------------------------------------------+------------------------------------------------------+
+; Register name                                  ; Reason for Removal                                   ;
++------------------------------------------------+------------------------------------------------------+
+; CTRL:INSTANCE_CTRL|TX_button_byte_out[2,4,6,7] ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|number_to_display[8..30]    ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|TX_button_byte_out[0,1,3]   ; Merged with CTRL:INSTANCE_CTRL|TX_button_byte_out[5] ;
+; CTRL:INSTANCE_CTRL|ascii_digit_4[0]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_5[0]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_4[2]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_3[3]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_4[3]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_5[3]            ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|bin_segment_d4[0,1,3,4]     ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|ascii_digit_4[1]            ; Merged with CTRL:INSTANCE_CTRL|ascii_digit_3[0]      ;
+; CTRL:INSTANCE_CTRL|ascii_digit_5[1,2]          ; Merged with CTRL:INSTANCE_CTRL|ascii_digit_3[0]      ;
+; CTRL:INSTANCE_CTRL|ascii_digit_3[1,2]          ; Merged with CTRL:INSTANCE_CTRL|ascii_digit_3[0]      ;
+; CTRL:INSTANCE_CTRL|bin_segment_d3[0..2]        ; Stuck at GND due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|bin_segment_d3[6]           ; Stuck at VCC due to stuck port data_in               ;
+; CTRL:INSTANCE_CTRL|bin_segment_d5[0,2..5]      ; Stuck at GND due to stuck port data_in               ;
+; Total Number of Removed Registers = 54         ;                                                      ;
++------------------------------------------------+------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                       ;
++-----------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                                      ;
++-----------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; CTRL:INSTANCE_CTRL|number_to_display[8] ; Stuck at GND              ; CTRL:INSTANCE_CTRL|ascii_digit_4[2], CTRL:INSTANCE_CTRL|ascii_digit_3[3],   ;
+;                                         ; due to stuck port data_in ; CTRL:INSTANCE_CTRL|ascii_digit_4[3], CTRL:INSTANCE_CTRL|ascii_digit_5[3],   ;
+;                                         ;                           ; CTRL:INSTANCE_CTRL|bin_segment_d3[0], CTRL:INSTANCE_CTRL|bin_segment_d3[1], ;
+;                                         ;                           ; CTRL:INSTANCE_CTRL|bin_segment_d3[2], CTRL:INSTANCE_CTRL|bin_segment_d3[6]  ;
+; CTRL:INSTANCE_CTRL|ascii_digit_5[0]     ; Stuck at GND              ; CTRL:INSTANCE_CTRL|bin_segment_d5[0], CTRL:INSTANCE_CTRL|bin_segment_d5[2], ;
+;                                         ; due to stuck port data_in ; CTRL:INSTANCE_CTRL|bin_segment_d5[3], CTRL:INSTANCE_CTRL|bin_segment_d5[4], ;
+;                                         ;                           ; CTRL:INSTANCE_CTRL|bin_segment_d5[5]                                        ;
+; CTRL:INSTANCE_CTRL|ascii_digit_4[0]     ; Stuck at GND              ; CTRL:INSTANCE_CTRL|bin_segment_d4[0], CTRL:INSTANCE_CTRL|bin_segment_d4[1], ;
+;                                         ; due to stuck port data_in ; CTRL:INSTANCE_CTRL|bin_segment_d4[3], CTRL:INSTANCE_CTRL|bin_segment_d4[4]  ;
++-----------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 200   ;
+; Number of registers using Synchronous Clear  ; 41    ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 82    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 38    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------+
+; Inverted Register Statistics                       ;
++------------------------------------------+---------+
+; Inverted Register                        ; Fan out ;
++------------------------------------------+---------+
+; CTRL:INSTANCE_CTRL|number_to_display[31] ; 200     ;
+; CTRL:INSTANCE_CTRL|number_to_display[0]  ; 5       ;
+; Total number of inverted registers = 2   ;         ;
++------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |UART|rx:INSTANCE_RX|RX_byte_out[3]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |UART|rx:INSTANCE_RX|shift_reg[4]     ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |UART|tx:INSTANCE_TX|baud_counter[11] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |UART|tx:INSTANCE_TX|bit_counter[0]   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |UART|rx:INSTANCE_RX|baud_counter[9]  ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |UART|rx:INSTANCE_RX|bit_counter[1]   ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |UART|tx:INSTANCE_TX|shift_reg[6]     ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |UART|tx:INSTANCE_TX|shift_reg[5]     ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |UART|rx:INSTANCE_RX|sample_count[2]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |UART|tx:INSTANCE_TX|state            ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |UART|CTRL:INSTANCE_CTRL|Selector69   ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |UART|CTRL:INSTANCE_CTRL|Selector35   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |UART|tx:INSTANCE_TX|state            ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |UART|rx:INSTANCE_RX|state            ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |UART|rx:INSTANCE_RX|state            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |uart ;
++-----------------+----------+-----------------------------------------+
+; Parameter Name  ; Value    ; Type                                    ;
++-----------------+----------+-----------------------------------------+
+; CLOCK_FREQ      ; 50000000 ; Signed Integer                          ;
+; BAUD_RATE       ; 9600     ; Signed Integer                          ;
+; OVERSAMPLE_RATE ; 8        ; Signed Integer                          ;
+; NUM_SEGMENTS    ; 7        ; Signed Integer                          ;
++-----------------+----------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: rx:INSTANCE_RX ;
++-----------------+----------+--------------------------------+
+; Parameter Name  ; Value    ; Type                           ;
++-----------------+----------+--------------------------------+
+; clock_freq      ; 50000000 ; Signed Integer                 ;
+; baud_rate       ; 9600     ; Signed Integer                 ;
+; oversample_rate ; 8        ; Signed Integer                 ;
++-----------------+----------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: tx:INSTANCE_TX ;
++----------------+----------+---------------------------------+
+; Parameter Name ; Value    ; Type                            ;
++----------------+----------+---------------------------------+
+; clock_freq     ; 50000000 ; Signed Integer                  ;
+; baud_rate      ; 9600     ; Signed Integer                  ;
++----------------+----------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: CTRL:INSTANCE_CTRL ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; num_segments   ; 7     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod5 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Div4 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 5              ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_fbo ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod4 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Div3 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 8              ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_ibo ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod3 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod2 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod1 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CTRL:INSTANCE_CTRL|lpm_divide:Mod0 ;
++------------------------+----------------+-------------------------------------------+
+; Parameter Name         ; Value          ; Type                                      ;
++------------------------+----------------+-------------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                   ;
+; LPM_WIDTHD             ; 32             ; Untyped                                   ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                   ;
+; LPM_PIPELINE           ; 0              ; Untyped                                   ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                   ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                   ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                   ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                   ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                   ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                            ;
++------------------------+----------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CTRL:INSTANCE_CTRL"                                                                    ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; led_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "rx:INSTANCE_RX"                                                                        ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; rx_busy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 84                          ;
+; cycloneiii_ff         ; 200                         ;
+;     CLR               ; 81                          ;
+;     CLR SCLR          ; 1                           ;
+;     ENA               ; 22                          ;
+;     ENA SCLR          ; 8                           ;
+;     ENA SCLR SLD      ; 7                           ;
+;     ENA SLD           ; 1                           ;
+;     SCLR              ; 25                          ;
+;     plain             ; 55                          ;
+; cycloneiii_lcell_comb ; 6236                        ;
+;     arith             ; 2150                        ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 250                         ;
+;         3 data inputs ; 1893                        ;
+;     normal            ; 4086                        ;
+;         0 data inputs ; 149                         ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 2124                        ;
+;         3 data inputs ; 87                          ;
+;         4 data inputs ; 1718                        ;
+;                       ;                             ;
+; Max LUT depth         ; 194.40                      ;
+; Average LUT depth     ; 153.98                      ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Fri Nov  7 10:48:50 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off uart -c uart
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file uart.vhd
+    Info (12022): Found design unit 1: UART-RTL File: /home/sara/fpga/uart/uart.vhd Line: 57
+    Info (12023): Found entity 1: UART File: /home/sara/fpga/uart/uart.vhd Line: 14
+Info (12021): Found 2 design units, including 1 entities, in source file RX.vhd
+    Info (12022): Found design unit 1: rx-RTL File: /home/sara/fpga/uart/RX.vhd Line: 26
+    Info (12023): Found entity 1: rx File: /home/sara/fpga/uart/RX.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file TX.vhd
+    Info (12022): Found design unit 1: tx-RTL File: /home/sara/fpga/uart/TX.vhd Line: 25
+    Info (12023): Found entity 1: tx File: /home/sara/fpga/uart/TX.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file CTRL.vhd
+    Info (12022): Found design unit 1: CTRL-RTL File: /home/sara/fpga/uart/CTRL.vhd Line: 48
+    Info (12023): Found entity 1: CTRL File: /home/sara/fpga/uart/CTRL.vhd Line: 14
+Info (12127): Elaborating entity "uart" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at uart.vhd(26): used implicit default value for signal "RX_byte_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sara/fpga/uart/uart.vhd Line: 26
+Warning (10541): VHDL Signal Declaration warning at uart.vhd(51): used implicit default value for signal "LED_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/sara/fpga/uart/uart.vhd Line: 51
+Info (12129): Elaborating entity "rx" using architecture "A:rtl" for hierarchy "rx:INSTANCE_RX" File: /home/sara/fpga/uart/uart.vhd Line: 67
+Info (12129): Elaborating entity "tx" using architecture "A:rtl" for hierarchy "tx:INSTANCE_TX" File: /home/sara/fpga/uart/uart.vhd Line: 84
+Info (12129): Elaborating entity "CTRL" using architecture "A:rtl" for hierarchy "CTRL:INSTANCE_CTRL" File: /home/sara/fpga/uart/uart.vhd Line: 101
+Warning (10036): Verilog HDL or VHDL warning at CTRL.vhd(106): object "baud_rate" assigned a value but never read File: /home/sara/fpga/uart/CTRL.vhd Line: 106
+Info (278001): Inferred 8 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod5" File: /home/sara/fpga/uart/CTRL.vhd Line: 144
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Div4" File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod4" File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Div3" File: /home/sara/fpga/uart/CTRL.vhd Line: 140
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod3" File: /home/sara/fpga/uart/CTRL.vhd Line: 140
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod2" File: /home/sara/fpga/uart/CTRL.vhd Line: 138
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod1" File: /home/sara/fpga/uart/CTRL.vhd Line: 136
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CTRL:INSTANCE_CTRL|Mod0" File: /home/sara/fpga/uart/CTRL.vhd Line: 134
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Mod5" File: /home/sara/fpga/uart/CTRL.vhd Line: 144
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Mod5" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 144
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_25o.tdf
+    Info (12023): Found entity 1: lpm_divide_25o File: /home/sara/fpga/uart/db/lpm_divide_25o.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: /home/sara/fpga/uart/db/abs_divider_4dg.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_o2f.tdf
+    Info (12023): Found entity 1: alt_u_div_o2f File: /home/sara/fpga/uart/db/alt_u_div_o2f.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_4p9.tdf
+    Info (12023): Found entity 1: lpm_abs_4p9 File: /home/sara/fpga/uart/db/lpm_abs_4p9.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Div4" File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Div4" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "5"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_fbo.tdf
+    Info (12023): Found entity 1: lpm_divide_fbo File: /home/sara/fpga/uart/db/lpm_divide_fbo.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_kbg.tdf
+    Info (12023): Found entity 1: abs_divider_kbg File: /home/sara/fpga/uart/db/abs_divider_kbg.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_she.tdf
+    Info (12023): Found entity 1: alt_u_div_she File: /home/sara/fpga/uart/db/alt_u_div_she.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_t3c.tdf
+    Info (12023): Found entity 1: add_sub_t3c File: /home/sara/fpga/uart/db/add_sub_t3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_u3c.tdf
+    Info (12023): Found entity 1: add_sub_u3c File: /home/sara/fpga/uart/db/add_sub_u3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_o99.tdf
+    Info (12023): Found entity 1: lpm_abs_o99 File: /home/sara/fpga/uart/db/lpm_abs_o99.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_8b9.tdf
+    Info (12023): Found entity 1: lpm_abs_8b9 File: /home/sara/fpga/uart/db/lpm_abs_8b9.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Mod4" File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Mod4" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 142
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Div3" File: /home/sara/fpga/uart/CTRL.vhd Line: 140
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Div3" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 140
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ibo.tdf
+    Info (12023): Found entity 1: lpm_divide_ibo File: /home/sara/fpga/uart/db/lpm_divide_ibo.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_nbg.tdf
+    Info (12023): Found entity 1: abs_divider_nbg File: /home/sara/fpga/uart/db/abs_divider_nbg.tdf Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_2ie.tdf
+    Info (12023): Found entity 1: alt_u_div_2ie File: /home/sara/fpga/uart/db/alt_u_div_2ie.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_r99.tdf
+    Info (12023): Found entity 1: lpm_abs_r99 File: /home/sara/fpga/uart/db/lpm_abs_r99.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Mod2" File: /home/sara/fpga/uart/CTRL.vhd Line: 138
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Mod2" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 138
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Mod1" File: /home/sara/fpga/uart/CTRL.vhd Line: 136
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Mod1" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 136
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12130): Elaborated megafunction instantiation "CTRL:INSTANCE_CTRL|lpm_divide:Mod0" File: /home/sara/fpga/uart/CTRL.vhd Line: 134
+Info (12133): Instantiated megafunction "CTRL:INSTANCE_CTRL|lpm_divide:Mod0" with the following parameter: File: /home/sara/fpga/uart/CTRL.vhd Line: 134
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (13014): Ignored 16 buffer(s)
+    Info (13016): Ignored 16 CARRY_SUM buffer(s)
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "RX_byte_out[0]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[1]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[2]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[3]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[4]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[5]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[6]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "RX_byte_out[7]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 26
+    Warning (13410): Pin "out_segments_digit_3[0]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 37
+    Warning (13410): Pin "out_segments_digit_3[1]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 37
+    Warning (13410): Pin "out_segments_digit_3[2]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 37
+    Warning (13410): Pin "out_segments_digit_3[6]" is stuck at VCC File: /home/sara/fpga/uart/uart.vhd Line: 37
+    Warning (13410): Pin "out_segments_digit_4[0]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 38
+    Warning (13410): Pin "out_segments_digit_4[1]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 38
+    Warning (13410): Pin "out_segments_digit_4[3]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 38
+    Warning (13410): Pin "out_segments_digit_4[4]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 38
+    Warning (13410): Pin "out_segments_digit_5[0]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 39
+    Warning (13410): Pin "out_segments_digit_5[2]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 39
+    Warning (13410): Pin "out_segments_digit_5[3]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 39
+    Warning (13410): Pin "out_segments_digit_5[4]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 39
+    Warning (13410): Pin "out_segments_digit_5[5]" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 39
+    Warning (13410): Pin "LED_out" is stuck at GND File: /home/sara/fpga/uart/uart.vhd Line: 51
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 21 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "TX_byte_in[0]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[1]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[2]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[3]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[4]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[5]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[6]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "TX_byte_in[7]" File: /home/sara/fpga/uart/uart.vhd Line: 29
+    Warning (15610): No output dependent on input pin "RX_busy" File: /home/sara/fpga/uart/uart.vhd Line: 49
+    Warning (15610): No output dependent on input pin "RX_byte_in[0]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[1]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[2]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[3]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[4]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[5]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[6]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "RX_byte_in[7]" File: /home/sara/fpga/uart/uart.vhd Line: 50
+    Warning (15610): No output dependent on input pin "baud_code[0]" File: /home/sara/fpga/uart/uart.vhd Line: 53
+    Warning (15610): No output dependent on input pin "baud_code[1]" File: /home/sara/fpga/uart/uart.vhd Line: 53
+    Warning (15610): No output dependent on input pin "baud_code[2]" File: /home/sara/fpga/uart/uart.vhd Line: 53
+    Warning (15610): No output dependent on input pin "baud_code[3]" File: /home/sara/fpga/uart/uart.vhd Line: 53
+Info (21057): Implemented 6360 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 28 input pins
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 6276 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 48 warnings
+    Info: Peak virtual memory: 506 megabytes
+    Info: Processing ended: Fri Nov  7 10:49:03 2025
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:22
+
+

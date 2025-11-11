@@ -1,0 +1,117 @@
+% Author - Jon Arnt Kårstad, NTNU IMT
+\documentclass{article}
+
+% Importing document settings from our file "packages.sty"
+\usepackage{packages}
+
+% Beginning of document
+\begin{document}
+
+% Inserting title page
+\import{./}{title}
+
+% Defining front matter settings (Norsk: innstillinger for forord m.m.)
+\frontmatter
+
+% Inserting table of contents
+\tableofcontents
+
+% Inserting list of figures & list of tables
+\listoffigures
+\listoftables
+
+% Defining main matter settings (Norsk: innstillinger for hoveddelen av teksten)
+\mainmatter
+
+% Introduction explaining this LaTeX-template
+\section{Introduksjon og prosjektbeskrivelse}
+
+Denne rapporten tar for seg design og implementering av en Universal Asynchronous Receiver Transmitter (UART). Modulen skal oppfylle gitte prosjektkrav, og skal implementeres i VHDL kode for DE10-Lite, og testes på dette FPGA kortet samt opp mot en annen mikrokontroller for å verifisere at UART-modulen har ønsket funksjonalitet og kan leses av andre enheter. Rapporten skal dokumenteres som et datablad. 
+
+\section{Spesifikasjoner}
+
+I dette prosjektet er det gitt spesifikasjoner for oppførselen til UART-modulen. Den skal bestå av en RX- og TX-modul, samt en kontrollmodul, CTRL, som vil være en styringsenhet for RX- og TX-modulene. Det er gitte spesifikke krav for hver modul, men overordnet for alle modulene er det krav om et 50MHz klokkesignal og et reset-signal som initialiserer modulene. Følgende tabeller er gitt for de ulike modulene. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/rxkrav.png}
+    %\caption{Enter Caption}
+    \label{fig:rxkrav}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/txkrav.png}
+    %\caption{Enter Caption}
+    \label{fig:txkrav}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/ctrlkrav.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+\section{Teori}
+
+
+
+
+
+
+\section{Dokumentasjon}
+
+
+\subsection{Introduction}
+%• En introduksjon av det implementerte designet med en oppsummering av funksjonalitet ogvirkem˚ate.
+
+\subsubsection{Block diagram}
+
+\subsubsection{}
+
+%%• Tilstandsdiagrammer for eventuelle tilstandsmaskiner i implementasjonen og forklaring av
+%disse.
+
+\subsection{Receiver Module (RX)}
+
+
+\subsection{Transmitter Module (TX)}
+
+
+\subsection{Control Module (CTRL)}
+
+
+%• Tidsdiagrammer og simuleringsresultater med forklaring/diskusjon.
+%• Resultater fra syntetisering.
+%• Dokumentasjon av testoppsett og resultater fra testing med mikrokontroller.
+%• En oversikt over hvilke av de definerte kravspesifikasjonene som er oppfylt med kommen-
+%tarer.
+%• Det bør ogs˚a foreligge en forklaring om hva slags normer som har blitt fulgt under skriving
+%av VHDL-koden.
+%Det trengs ikke noen inng˚aende forklaring av UART-protokollen i dokumentet. Videre skal
+%all kode, b˚ade for UART-modulen, testbenker og mikrokontroller legges ved i et eget arkiv. Det
+%skal ogs˚a legges ved en video viser virkem˚aten til den implementerte modulen i samhandling med
+%en mikrokontroller.
+
+% Example section added directly into the main-file
+\section{Conclusion}
+.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Images/vurdering.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+% Printing bibliography
+\newpage
+\printbibliography[heading = bibintoc, title = Bibliography]    % 'bibintoc' inserts our bibliography into the table of contents
+
+% Inserting appendix with separate settings
+%\addappendix
+%\import{./Appendices/}{example_appendix}
+
+% End of document
+\end{document}
